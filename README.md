@@ -1,7 +1,7 @@
 # [Path Integral Sampler: a stochastic control approach for sampling](https://arxiv.org/abs/2111.15141)
 
 
-[![PIS Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/13IMQLuuSqDigMdPtBKCKduIU_Zqyg_p3?usp=sharing)
+[![PIS Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1NOHGt2iHoETgbSh4z7dLep95-zN8FNKL?usp=sharing)
 
 
 ## Reference
