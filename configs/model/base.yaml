@@ -15,7 +15,7 @@ sde_model:
   _target_: src.models.pis_nn.PISNN
   reg_fns:
     - src.models.loss.quad_reg
-  f_format: "f"
+  f_format: "t_tnet_grad"
   data_shape: ${model.data_shape}
   sde_type: ito
   nn_clip: 1e4
@@ -25,7 +25,7 @@ sdeint:
   _target_: torchsde.sdeint
   method: euler
 
-lr: 1e-3
+lr: 5e-3
 weight_decay: 1e-7
 
 

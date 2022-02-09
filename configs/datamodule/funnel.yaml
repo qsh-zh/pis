@@ -1,0 +1,10 @@
+defaults:
+  - datamodule
+
+dataset:
+  _target_: src.datamodules.datasets.funnel.FunnelSet
+  len_data: 15000
+  dim: 10
+
+ndim: ${datamodule.dataset.dim}
+shape: ${datamodule.dataset.dim}
