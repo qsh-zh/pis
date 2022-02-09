@@ -43,3 +43,8 @@ There are some [results](https://wandb.ai/qinsheng/pub_pis?workspace=user-qinshe
   year      = {2022}
 }
 ```
+
+## MICS:
+
+- [sde-sampler](https://gitlab.com/qsh.zh/sde-sampler/-/tree/rings) Uncleaned code used for experiments in paper.
+- SDE parameters `dt,g` are modified due to [the issue](https://github.com/google-research/torchsde/issues/109).
