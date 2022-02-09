@@ -1,0 +1,34 @@
+# @package _global_
+
+# verify the loss curve:
+# python run.py experiment=ps.yaml logger=wandb
+# python run.py experiment=ps.yaml callbacks.sample.every_n=1
+
+defaults:
+  - override /mode: default.yaml
+  - override /trainer: default.yaml
+  - override /model: base.yaml
+  - override /datamodule: nine.yaml
+  - override /callbacks: null
+  - override /logger: null
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+# name of the run determines folder name in logs
+# it's also accessed by loggers
+name: "ps"
+
+seed: 12345
+
+trainer:
+  min_epochs: 1
+  max_epochs: 10
+  max_steps: 200
+  log_every_n_steps: 10
+  flush_logs_every_n_steps: 10
+
+callbacks:
+  sample:
+    _target_: src.callbacks.ps_cb.PSSample
+    every_n: 25

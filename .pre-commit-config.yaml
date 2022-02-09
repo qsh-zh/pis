@@ -1,0 +1,48 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+      # list of supported hooks: https://pre-commit.com/hooks.html
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-added-large-files
+      - id: detect-private-key
+
+  # python code formatting
+  - repo: https://github.com/psf/black
+    rev: 21.5b1
+    hooks:
+      - id: black
+
+  - repo: https://github.com/timothycrosley/isort
+    rev: 5.8.0
+    hooks:
+      - id: isort
+        additional_dependencies: [toml]
+        exclude: ^.*/?setup\.py$
+        args: ["--profile", "black"]
+
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.25.0
+    hooks:
+      - id: yamllint
+        args: [-c=.yamllint]
+
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        args:
+          - --rcfile=~/.pylintrc
+
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.5.0
+    hooks:
+      - id: nbstripout
+        description: "nbstripout: strip output from Jupyter and IPython notebooks"
+        entry: nbstripout
+        language: python
+        types: [jupyter]

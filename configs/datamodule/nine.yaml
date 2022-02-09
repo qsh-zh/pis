@@ -1,0 +1,9 @@
+defaults:
+  - datamodule
+
+dataset:
+  _target_: src.datamodules.datasets.ps.MG2D
+  len_data: 5000
+  xlim: 1.0
+ndim: 2
+shape: 2

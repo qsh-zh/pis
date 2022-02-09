@@ -1,0 +1,6 @@
+module:
+    _target_: src.datamodules.blank_datamodule.DataModule
+dl:
+    batch_size: 100
+    shuffle: true
+ndim: 1

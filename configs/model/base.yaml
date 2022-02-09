@@ -1,0 +1,35 @@
+module:
+  _target_: src.models.base_model.BaseModel
+
+f_func:
+  _target_: jamtorch.nn.fouriermlp.FourierMLP
+  in_shape: ${model.data_ndim}
+  out_shape: ${model.data_ndim}
+  num_layers: 2
+  channels: 64
+
+g_func:
+  _target_: src.networks.simple.IdentityOne
+
+sde_model:
+  _target_: src.models.pis_nn.PISNN
+  reg_fns:
+    - src.models.loss.quad_reg
+  f_format: "f"
+  data_shape: ${model.data_shape}
+  sde_type: ito
+  nn_clip: 1e4
+  lgv_clip: 1e4
+
+sdeint:
+  _target_: torchsde.sdeint
+  method: euler
+
+lr: 1e-3
+weight_decay: 1e-7
+
+
+data_ndim: ${datamodule.ndim}
+data_shape: ${datamodule.shape}
+dt: 0.05
+t_end: 5.0
