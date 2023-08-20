@@ -34,6 +34,12 @@ callbacks:
     _target_: src.callbacks.ou_cb.OUSample
     every_n: 25
 
+  traj:
+    _target_: src.callbacks.ou_cb.VizSampleTraj
+    every_n: 25
+    traj_num: 100
+    viz_traj_len: 100
+
 logger:
   wandb:
     name: pis-${name}

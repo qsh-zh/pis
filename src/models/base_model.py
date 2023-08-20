@@ -93,4 +93,4 @@ class BaseModel(LightningModule):
         return y1[:, : self.sde_model.data_ndim]
 
     def sample_traj(self, batch_size):
-        return generate_traj(batch_size, self.dt, self.t_end, batch_size)
+        return generate_traj(self.sde_model, self.dt, self.t_end, batch_size)
