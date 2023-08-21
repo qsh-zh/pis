@@ -9,12 +9,12 @@ from jamtorch.utils import as_numpy, no_grad_func
 def traj_plot(traj_len, samples, xlabel, ylabel, title="", fsave="img.png"):
     # samples = samples.squeeze().t().cpu()
     # (T,B,D)->(B,T,D)
-    samples = rearrange(samples, "t b d -> b t d").cpu()
-    inds = np.linspace(0, samples.shape[1], traj_len, endpoint=True, dtype=int)
+    samples = rearrange(samples, "t b d -> b t d")
+    inds = np.linspace(0, samples.shape[1]-1, traj_len, endpoint=True, dtype=int)
     samples = samples[:, inds]
     plt.figure()
     for i, sample in enumerate(samples):
-        plt.plot(np.range(traj_len), sample.flatten(), marker="x", label=f"sample {i}")
+        plt.plot(np.arange(traj_len), sample.flatten(), label=f"sample {i}")
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
